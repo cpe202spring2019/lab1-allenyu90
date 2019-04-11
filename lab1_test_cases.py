@@ -45,6 +45,24 @@ class TestLab1(unittest.TestCase):
         low = 0
         high = len(list_val)-1
         self.assertEqual(bin_search(4, 0, len(list_val)-1, list_val), 4 )
+        self.assertEqual(bin_search(-1, 0, len(list_val)-1, list_val), None)
+        self.assertEqual(bin_search(11, 0, len(list_val)-1, list_val), None)
+        self.assertEqual(bin_search(0, 0, len(list_val)-1, list_val), 0 )
+        self.assertEqual(bin_search(10, 0, len(list_val)-1, list_val), 8)
+        self.assertEqual(bin_search(4, 6, 4, list_val), None)
+        self.assertEqual(bin_search(4, 0, 3, list_val), None )
+        self.assertEqual(bin_search(4, 5, len(list_val)-1, list_val), None )
+
+
+    def test_bin_search_error(self):
+        tlist = None
+        with self.assertRaises(ValueError):
+            bin_search(4, 0, 7, tlist)
+
+    def test_bin_search_empty(self):
+        tlist = []
+        self.assertEqual(bin_search(4, 0, 5, tlist), None)
+        
 
 if __name__ == "__main__":
         unittest.main()
